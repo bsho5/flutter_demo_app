@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo_app/const/colors.dart';
-import 'package:flutter_demo_app/controllers/item_controller.dart';
-import 'package:flutter_demo_app/models/item_model.dart';
-import 'package:flutter_demo_app/widgets/counter.dart';
 import 'package:get/get.dart';
-import '../controllers/cart_controller.dart';
-import '../controllers/category_controller.dart';
 import 'dart:math';
 
 import '../controllers/deals_controller.dart';
 
+// ignore: must_be_immutable
 class FavoritesScreen extends StatelessWidget {
   List<Color> colors = [
     const Color.fromRGBO(249, 189, 173, 1),
@@ -21,9 +17,11 @@ class FavoritesScreen extends StatelessWidget {
   int min = 0;
   int randomNumber = 0;
 
+  FavoritesScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
-    DealsController dealsController = Get.find<DealsController>();
+    
     randomNumber = Random().nextInt(2) + 0;
     return Scaffold(
       backgroundColor: AppColors.appBackgroundColor,
@@ -31,7 +29,7 @@ class FavoritesScreen extends StatelessWidget {
           leading: Container(),
           elevation: 0,
           backgroundColor: AppColors.appBackgroundColor,
-          title: Text(
+          title: const Text(
             'Favorites',
             style: TextStyle(color: Colors.black),
           )),
@@ -39,7 +37,7 @@ class FavoritesScreen extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.only(
               top: 20, bottom: 11.0, left: 11.0, right: 11.0),
-          child:Get.find<DealsController>().getItems.isEmpty?Container(child: Center(child: Text('You Dont Have Any Favorite Item Yet')),): Column(
+          child:Get.find<DealsController>().getItems.isEmpty?const Center(child: Text('You Don\'t Have Any Favorite Item Yet')): Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               GetBuilder<DealsController>(builder: (dealsController) {
@@ -49,7 +47,7 @@ class FavoritesScreen extends StatelessWidget {
                   shrinkWrap: true,
                   itemCount: dealsController.getItems.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return Container(
+                    return SizedBox(
                       height: 56,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -81,9 +79,7 @@ class FavoritesScreen extends StatelessWidget {
                                       style: const TextStyle(
                                           fontSize: 8, color: Colors.grey)),
                                   Text(
-                                      '\$ ' +
-                                          dealsController.getItems[index].price
-                                              .toString(),
+                                      '\$ ${dealsController.getItems[index].price}',
                                       style: const TextStyle(
                                           fontSize: 15,
                                           color:

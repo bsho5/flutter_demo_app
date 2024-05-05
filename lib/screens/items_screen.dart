@@ -1,7 +1,8 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:flutter_demo_app/const/colors.dart';
 import 'package:flutter_demo_app/models/item_model.dart';
-import 'package:flutter_demo_app/widgets/counter.dart';
 import 'package:get/get.dart';
 import '../controllers/cart_controller.dart';
 import '../controllers/category_controller.dart';
@@ -23,13 +24,12 @@ class ItemsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    CartController cartController = Get.find<CartController>();
     randomNumber = Random().nextInt(2) + 0;
     return Scaffold(
       backgroundColor: AppColors.appBackgroundColor,
       appBar: AppBar(
           leading: IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back_ios,
               size: 30,
               color: Colors.black,
@@ -40,7 +40,7 @@ class ItemsScreen extends StatelessWidget {
           backgroundColor: AppColors.appBackgroundColor,
           title: Text(
             categoryName,
-            style: TextStyle(color: Colors.black),
+            style: const TextStyle(color: Colors.black),
           )),
       body: SafeArea(
         child: Padding(
@@ -56,7 +56,7 @@ class ItemsScreen extends StatelessWidget {
                   shrinkWrap: true,
                   itemCount: items.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return Container(
+                    return SizedBox(
                       height: 56,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -87,7 +87,7 @@ class ItemsScreen extends StatelessWidget {
                                   Text(items[index].serving!,
                                       style: const TextStyle(
                                           fontSize: 8, color: Colors.grey)),
-                                  Text('\$ ' + items[index].price.toString(),
+                                  Text('\$ ${items[index].price}',
                                       style: const TextStyle(
                                           fontSize: 15,
                                           color:
@@ -98,7 +98,7 @@ class ItemsScreen extends StatelessWidget {
                             ],
                           ),
                           GetBuilder<CartController>(builder: (cartController) {
-                            return Container(
+                            return SizedBox(
                               height: 33,
                               width: 111,
                               child: Row(
@@ -177,7 +177,7 @@ class ItemsScreen extends StatelessWidget {
                   color: colors[randomNumber],
                   child: GetBuilder<CartController>(builder: (cartController) {
                     return TextButton(
-                      child: Text(
+                      child: const Text(
                         'Add To Cart',
                         style: TextStyle(
                             color: Colors.white,

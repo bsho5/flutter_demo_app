@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 import '../controllers/cart_controller.dart';
@@ -7,7 +6,7 @@ import '../controllers/cart_controller.dart';
 class CartCounter extends StatelessWidget {
   final int index;
 
-  const CartCounter({required this.index});
+  const CartCounter({super.key, required this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +26,7 @@ class CartCounter extends StatelessWidget {
                   height: 33,
                 width: 33,
                 decoration: BoxDecoration(
-                  color: Color.fromRGBO(175, 232, 251, 1),
+                  color: const Color.fromRGBO(175, 232, 251, 1),
                   borderRadius: BorderRadius.circular(5)
                 ),
                 child: IconButton(
@@ -36,27 +35,27 @@ class CartCounter extends StatelessWidget {
                         controller.getItems[index].count =
                             controller.getItems[index].count - 1;
                         controller.totalItems;
-                        print(controller.getItems[index].count);
+                        
                         controller.update();
                     
                       } else {
                         controller.delete(controller.getItems[index].name);
                         controller.totalItems;
-                        print(controller.totalItems);
+                       
                         controller.update();
                        
                         
                       }
                       controller.update();
                     },
-                    icon: Icon(Icons.remove_circle_outline, color: Colors.white)),
+                    icon: const Icon(Icons.remove_circle_outline, color: Colors.white)),
               ),
               Container(
                 alignment: Alignment.center,
                 // width: 30,
                 child: Text(
                   controller.getItems[index].count.toString(),
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
                       color: Colors.white),
@@ -66,19 +65,19 @@ class CartCounter extends StatelessWidget {
                 height: 33,
                 width: 33,
                 decoration: BoxDecoration(
-                  color: Color.fromRGBO(175, 232, 251, 1),
+                  color: const Color.fromRGBO(175, 232, 251, 1),
                   borderRadius: BorderRadius.circular(5)
                 ),
                 child: IconButton(
                     onPressed: () {
                       controller.getItems[index].count =
                           controller.getItems[index].count + 1;
-                      print(controller.getItems[index].count);
+                      
                       controller.totalItems;
                       controller.update();
                      
                     },
-                    icon: Icon(Icons.add_circle_outline, color: Colors.white)),
+                    icon: const Icon(Icons.add_circle_outline, color: Colors.white)),
               )
             ],
           ),

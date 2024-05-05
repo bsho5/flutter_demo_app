@@ -9,10 +9,10 @@ class ItemController extends GetxController {
   // final ItemRepo itemRepo;
 
   // ItemController({required this.itemRepo});
-  List<CategoryModel> _itemList = [];
+  final List<CategoryModel> _itemList = [];
   List<CategoryModel> get itemList => _itemList;
-  Map<String?, ItemModel>? _favList = {};
-  bool _isloading = false;
+  final Map<String?, ItemModel> _favList = {};
+  final bool _isloading = false;
   bool get isloading => _isloading;
 
   // Future<void> getData() async {
@@ -32,8 +32,8 @@ class ItemController extends GetxController {
   // }
 
   void addItemToFav(ItemModel item, int quantity) {
-    if (_favList!.containsKey(item.name)) {
-      _favList?.update(item.name, (value) {
+    if (_favList.containsKey(item.name)) {
+      _favList.update(item.name, (value) {
         return ItemModel(
           id: item.id,
           name: item.name,
@@ -43,7 +43,7 @@ class ItemController extends GetxController {
         );
       });
     } else {
-      _favList?.putIfAbsent(item.name, () {
+      _favList.putIfAbsent(item.name, () {
         return ItemModel(
           id: item.id,
           price: item.price,
@@ -57,19 +57,19 @@ class ItemController extends GetxController {
     update();
   }
    List<ItemModel> get getItems {
-    return _favList!.entries.map((e) {
+    return _favList.entries.map((e) {
       return e.value;
     }).toList();
   }
   void addItemItem(ItemModel? item, ) {
-    CartController _cart = Get.find<CartController>();
+    CartController cart = Get.find<CartController>();
 
-    _cart.addItem(item!, 1);
+    cart.addItem(item!, 1);
   
   }
   bool existInCart(ItemModel? item) {
-    CartController _cart = Get.find<CartController>();
+    CartController cart = Get.find<CartController>();
 
-    return _cart.existInCart(item!);
+    return cart.existInCart(item!);
   }
 }

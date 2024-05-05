@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_demo_app/const/colors.dart';
 import 'package:flutter_demo_app/controllers/cart_controller.dart';
@@ -12,8 +11,11 @@ import '../screens/news_screen.dart';
 
 class BottomNavBar extends StatefulWidget {
   static String id = 'BottomNavBar';
+
+  const BottomNavBar({super.key});
   @override
-  _BottomNavBarState createState() => _BottomNavBarState();
+   State<BottomNavBar> createState() => _BottomNavBarState();
+
 }
 
 class _BottomNavBarState extends State<BottomNavBar> {
@@ -21,7 +23,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
 
   final List<Widget> _children = [
     GroceryScreen(),
-    NewsScreen(),
+    const NewsScreen(),
     FavoritesScreen(),
     CartScreen(),
   ];
@@ -42,11 +44,11 @@ class _BottomNavBarState extends State<BottomNavBar> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               GetBuilder<CartController>(builder: (cartController) {
-                  return Text('\$'+cartController.totalAmount.toString(),);
+                  return Text('\$${cartController.totalAmount}',);
                 }
               ),
               Transform( alignment: Alignment.center,
-  transform: Matrix4.rotationY(math.pi),child: FaIcon(FontAwesomeIcons.opencart,size: 17,)),
+  transform: Matrix4.rotationY(math.pi),child: const FaIcon(FontAwesomeIcons.opencart,size: 17,)),
             ],
           ),
         ),

@@ -5,14 +5,14 @@ import '../models/cart_model.dart';
 import '../models/item_model.dart';
 
 class CartController extends GetxController {
-  Map<String?, CartModel>? _cart = {};
+  final Map<String?, CartModel> _cart = {};
   int _quantity = 0;
   int get quantity => _quantity;
 
   void addItem(ItemModel item, int quantity) {
-    if (_cart!.containsKey(item.name)) {
-      print('new item');
-      _cart?.update(item.name, (value) {
+    if (_cart.containsKey(item.name)) {
+      
+      _cart.update(item.name, (value) {
         return CartModel(
           id: item.id!,
           name: item.name!,
@@ -22,8 +22,8 @@ class CartController extends GetxController {
         );
       });
     } else {
-      _cart?.putIfAbsent(item.name, () {
-        print('old item');
+      _cart.putIfAbsent(item.name, () {
+       
         return CartModel(
           id: item.id!,
           price: item.price!,
@@ -33,12 +33,12 @@ class CartController extends GetxController {
         );
       });
     }
-    print(_cart);
+   
     update();
   }
 
   void delete(String name) {
-    _cart?.remove(name);
+    _cart.remove(name);
   }
 
   void resetQuantity() {
@@ -53,14 +53,14 @@ class CartController extends GetxController {
           backgroundColor: Colors.green,
           colorText: Colors.white,
           snackPosition: SnackPosition.TOP,
-          duration: Duration(seconds: 2));
+          duration: const Duration(seconds: 2));
     }
   }
 
   int getQuantity(ItemModel item) {
     var quantity = 0;
-    if (_cart!.containsKey(item.name)) {
-      _cart?.forEach((key, value) {
+    if (_cart.containsKey(item.name)) {
+      _cart.forEach((key, value) {
         if (key == item.name) {
           quantity = value.count;
         }
@@ -77,28 +77,28 @@ class CartController extends GetxController {
 
   int get totalItems {
     var totalQuantity = 0;
-    _cart?.forEach((key, value) {
+    _cart.forEach((key, value) {
       totalQuantity += value.count;
     });
     return totalQuantity;
   }
 
   List<CartModel> get getItems {
-    return _cart!.entries.map((e) {
+    return _cart.entries.map((e) {
       return e.value;
     }).toList();
   }
 
   int get totalAmount {
     var total = 0;
-    _cart?.forEach((key, value) {
+    _cart.forEach((key, value) {
       total += (value.price*value.count);
     });
     return total;
   }
 
   bool existInCart(ItemModel item) {
-    if (_cart!.containsKey(item.name)) {
+    if (_cart.containsKey(item.name)) {
       return true;
     } else {
       return false;

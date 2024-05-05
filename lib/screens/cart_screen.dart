@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_demo_app/widgets/counter.dart';
 import 'package:get/get.dart';
 
 import '../controllers/address_controller.dart';
 import '../controllers/cart_controller.dart';
 
+// ignore: must_be_immutable
 class CartScreen extends StatelessWidget {
  
 
@@ -15,6 +15,8 @@ class CartScreen extends StatelessWidget {
     const Color.fromRGBO(204, 184, 255, 1),
     const Color.fromRGBO(249, 189, 173, 1),
   ];
+
+  CartScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,18 +53,24 @@ class CartScreen extends StatelessWidget {
                               child: Container(
                                 width: 122.95,
                                 height: 34,
+                                decoration: const BoxDecoration(
+                                    color: Color.fromRGBO(238, 106, 97, 1),
+                                    borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(50.0),
+                                        bottomLeft: Radius.circular(50.0),
+                                        bottomRight: Radius.circular(30.0))),
                                 child: Padding(
                                   padding: const EdgeInsets.only(left: 10.0),
                                   child: Row(
                                     children: [
-                                      Icon(
+                                      const Icon(
                                         Icons.location_on_outlined,
                                         size: 18,
                                         color: Colors.white,
                                       ),
                                       Text(
                                         addressController.addressList[0].street,
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             color: Colors.white,
                                             fontSize: 13,
                                             fontWeight: FontWeight.w400),
@@ -70,12 +78,6 @@ class CartScreen extends StatelessWidget {
                                     ],
                                   ),
                                 ),
-                                decoration: const BoxDecoration(
-                                    color: Color.fromRGBO(238, 106, 97, 1),
-                                    borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(50.0),
-                                        bottomLeft: Radius.circular(50.0),
-                                        bottomRight: Radius.circular(30.0))),
                               ),
                             );
                           }),
@@ -104,14 +106,14 @@ class CartScreen extends StatelessWidget {
                 const SizedBox(
                   height: 20,
                 ),
-               Get.find<CartController>().getItems.isEmpty?Container(height: 300,child: Center(child: Text('You Dont Have Any Items In Your Cart Yet')),): GetBuilder<CartController>(builder: (cartController) {
+               Get.find<CartController>().getItems.isEmpty?const SizedBox(height: 300,child: Center(child: Text('You Don\'t Have Any Items In Your Cart Yet')),): GetBuilder<CartController>(builder: (cartController) {
                   return ListView.separated(
                     padding: const EdgeInsets.all(15),
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemCount: cartController.getItems.length,
                     itemBuilder: (BuildContext context, int index) {
-                      return Container(
+                      return SizedBox(
                         height: 56,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -142,12 +144,11 @@ class CartScreen extends StatelessWidget {
                                     Text(cartController.getItems[index].serving,
                                         style: const TextStyle(
                                             fontSize: 8, color: Colors.grey)),
-                                    Text('\$ '+
-                                        cartController.getItemTotalPrice(
+                                    Text('\$ ${cartController.getItemTotalPrice(
                                             cartController
                                                 .getItems[index].price,
                                             cartController
-                                                .getItems[index].count),
+                                                .getItems[index].count)}',
                                         style: const TextStyle(
                                             fontSize: 15,
                                             color:
@@ -159,7 +160,7 @@ class CartScreen extends StatelessWidget {
                             ),
                             GetBuilder<CartController>(
                                 builder: (cartController) {
-                              return Container(
+                              return SizedBox(
                                 height: 33,
                                 width: 111,
                                 child: Row(

@@ -10,7 +10,7 @@ class DealsController extends GetxController {
   DealsController({required this.dealsRepo});
   List<DealsModel> _dealsList = [];
   List<DealsModel> get dealsList => _dealsList;
-  Map<String?, DealsModel>? _favList = {};
+  final Map<String?, DealsModel> _favList = {};
   bool _isloading = false;
   bool get isloading => _isloading;
   @override
@@ -19,7 +19,7 @@ class DealsController extends GetxController {
     super.onInit();
   }
 
-  @override
+ 
   Future<void> getData() async {
     _isloading = true;
     _dealsList = [];
@@ -39,7 +39,7 @@ class DealsController extends GetxController {
   }
 
   void delete(String name) {
-    _favList?.remove(name);
+    _favList.remove(name);
   }
 
   void favBoolList() {
@@ -50,8 +50,8 @@ class DealsController extends GetxController {
   }
 
   void addItemToFav(DealsModel item) {
-    if (_favList!.containsKey(item.name)) {
-      _favList?.update(item.name, (value) {
+    if (_favList.containsKey(item.name)) {
+      _favList.update(item.name, (value) {
         return DealsModel(
           id: item.id,
           name: item.name,
@@ -62,7 +62,7 @@ class DealsController extends GetxController {
         );
       });
     } else {
-      _favList?.putIfAbsent(item.name, () {
+      _favList.putIfAbsent(item.name, () {
         return DealsModel(
           id: item.id,
           name: item.name,
@@ -78,7 +78,7 @@ class DealsController extends GetxController {
   }
 
   List<DealsModel> get getItems {
-    return _favList!.entries.map((e) {
+    return _favList.entries.map((e) {
       return e.value;
     }).toList();
   }
