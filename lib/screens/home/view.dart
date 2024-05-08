@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo_app/const/colors.dart';
-import 'package:flutter_demo_app/screens/items_screen.dart';
+import 'package:flutter_demo_app/screens/items/view.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
-import '../controllers/address_controller.dart';
-import '../controllers/category_controller.dart';
-import '../controllers/deals_controller.dart';
+import '../address/controller.dart';
+import 'controller.dart';
+import '../deals/controller.dart';
 
 // ignore: must_be_immutable
 class GroceryScreen extends StatelessWidget {
-  
   List<Color> colors = [
     const Color.fromRGBO(249, 189, 173, 1),
     const Color.fromRGBO(250, 217, 109, 1),
@@ -27,7 +26,7 @@ class GroceryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Get.find<AddressController>().isloading 
+      body: Get.find<AddressController>().isloading
           ? Container()
           : SafeArea(
               child: SingleChildScrollView(
@@ -38,8 +37,7 @@ class GroceryScreen extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          GetBuilder<AddressController>(
-                              builder: (addressController) {
+                          GetBuilder<AddressController>(builder: (addressController) {
                             return ClipRRect(
                               clipBehavior: Clip.antiAlias,
                               borderRadius: const BorderRadius.only(
@@ -53,11 +51,9 @@ class GroceryScreen extends StatelessWidget {
                                 width: 122.95,
                                 height: 34,
                                 decoration: const BoxDecoration(
-                                    color: Color.fromRGBO(238, 106, 97, 1),
+                                    color: AppColors.primary,
                                     borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(50.0),
-                                        bottomLeft: Radius.circular(50.0),
-                                        bottomRight: Radius.circular(30.0))),
+                                        topLeft: Radius.circular(50.0), bottomLeft: Radius.circular(50.0), bottomRight: Radius.circular(30.0))),
                                 child: Padding(
                                   padding: const EdgeInsets.only(left: 10.0),
                                   child: Row(
@@ -69,10 +65,7 @@ class GroceryScreen extends StatelessWidget {
                                       ),
                                       Text(
                                         addressController.addressList[0].street,
-                                        style: const TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 13,
-                                            fontWeight: FontWeight.w400),
+                                        style: const TextStyle(color: Colors.white, fontSize: 13, fontWeight: FontWeight.w400),
                                       ),
                                     ],
                                   ),
@@ -85,9 +78,7 @@ class GroceryScreen extends StatelessWidget {
                               width: 34,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(100),
-                                border: Border.all(
-                                    color:
-                                        const Color.fromRGBO(90, 112, 129, 1)),
+                                border: Border.all(color: const Color.fromRGBO(90, 112, 129, 1)),
                               ))
                         ],
                       ),
@@ -100,8 +91,7 @@ class GroceryScreen extends StatelessWidget {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           color: const Color.fromRGBO(245, 247, 249, 1),
-                          border: Border.all(
-                              color: const Color.fromRGBO(161, 161, 161, 1)),
+                          border: Border.all(color: const Color.fromRGBO(161, 161, 161, 1)),
                         ),
                         child: const Padding(
                           padding: EdgeInsets.only(left: 20),
@@ -127,11 +117,9 @@ class GroceryScreen extends StatelessWidget {
                         child: Column(
                           children: [
                             Expanded(
-                              child: GetBuilder<AddressController>(
-                                  builder: (addressController) {
+                              child: GetBuilder<AddressController>(builder: (addressController) {
                                 return ListView.separated(
-                                  separatorBuilder:
-                                      (BuildContext context, int index) {
+                                  separatorBuilder: (BuildContext context, int index) {
                                     return Container(
                                       width: 25,
                                     );
@@ -145,9 +133,7 @@ class GroceryScreen extends StatelessWidget {
                                       width: 167,
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(10),
-                                        border: Border.all(
-                                            color: const Color.fromRGBO(
-                                                230, 230, 230, 1)),
+                                        border: Border.all(color: const Color.fromRGBO(230, 230, 230, 1)),
                                       ),
                                       child: Row(
                                         children: [
@@ -157,37 +143,26 @@ class GroceryScreen extends StatelessWidget {
                                                 height: 34,
                                                 width: 34,
                                                 decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(5),
-                                                    color: const Color.fromRGBO(
-                                                        227, 221, 217, 1)
+                                                    borderRadius: BorderRadius.circular(5), color: const Color.fromRGBO(227, 221, 217, 1)
                                                     // border: Border.all(
                                                     //     color: Color.fromRGBO(90, 112, 129, 1)),
                                                     )),
                                           ),
                                           Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceEvenly,
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                             children: [
                                               Text(
-                                                '${addressController
-                                                        .addressList[index].type} Address',
-                                                style: const TextStyle(
-                                                    fontSize: 12,
-                                                    fontWeight: FontWeight.bold),
+                                                '${addressController.addressList[index].type} Address',
+                                                style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
                                               ),
                                               Row(
                                                 children: [
                                                   SizedBox(
                                                     width: 100,
                                                     child: Text(
-                                                      addressController
-                                                          .addressList[index]
-                                                          .fullAddress,
-                                                      style:
-                                                          const TextStyle(fontSize: 10),
+                                                      addressController.addressList[index].fullAddress,
+                                                      style: const TextStyle(fontSize: 10),
                                                       softWrap: true,
                                                     ),
                                                   ),
@@ -213,8 +188,7 @@ class GroceryScreen extends StatelessWidget {
                         children: [
                           Text(
                             'Explore by Category',
-                            style: TextStyle(
-                                fontSize: 12, fontWeight: FontWeight.bold),
+                            style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
                           ),
                           Text(
                             'See All (36)',
@@ -230,26 +204,21 @@ class GroceryScreen extends StatelessWidget {
                         child: Column(
                           children: [
                             Expanded(
-                              child: GetBuilder<CategoryController>(
-                                  builder: (categoryController) {
+                              child: GetBuilder<CategoryController>(builder: (categoryController) {
                                 return ListView.separated(
-                                  separatorBuilder:
-                                      (BuildContext context, int index) {
+                                  separatorBuilder: (BuildContext context, int index) {
                                     return Container(
                                       width: 25,
                                     );
                                   },
                                   scrollDirection: Axis.horizontal,
                                   // shrinkWrap: true,
-                                  itemCount:
-                                      categoryController.categoryList.length,
+                                  itemCount: categoryController.categoryList.length,
                                   itemBuilder: (BuildContext context, int index) {
                                     return GestureDetector(
                                       onTap: () => Get.to(() => ItemsScreen(
-                                            items: categoryController
-                                                .categoryList[index].items!,
-                                            categoryName: categoryController
-                                                .categoryList[index].name!,
+                                            items: categoryController.categoryList[index].items!,
+                                            categoryName: categoryController.categoryList[index].name!,
                                           )),
                                       child: Column(
                                         children: [
@@ -257,8 +226,7 @@ class GroceryScreen extends StatelessWidget {
                                               height: 56,
                                               width: 56,
                                               decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(10),
+                                                borderRadius: BorderRadius.circular(10),
                                                 color: colors[index],
                                                 // border: Border.all(
                                                 //     color: Color.fromRGBO(90, 112, 129, 1)),
@@ -266,13 +234,8 @@ class GroceryScreen extends StatelessWidget {
                                           const SizedBox(
                                             height: 6,
                                           ),
-                                          Text(
-                                              categoryController
-                                                      .categoryList[index].name ??
-                                                  '',
-                                              style: const TextStyle(
-                                                  fontSize: 12,
-                                                  fontWeight: FontWeight.w500))
+                                          Text(categoryController.categoryList[index].name ?? '',
+                                              style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w500))
                                         ],
                                       ),
                                     );
@@ -291,8 +254,7 @@ class GroceryScreen extends StatelessWidget {
                         children: [
                           Text(
                             'Deals of the day',
-                            style: TextStyle(
-                                fontSize: 12, fontWeight: FontWeight.bold),
+                            style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
                           ),
                         ],
                       ),
@@ -304,11 +266,9 @@ class GroceryScreen extends StatelessWidget {
                         child: Column(
                           children: [
                             Expanded(
-                              child: GetBuilder<DealsController>(
-                                  builder: (dealsController) {
+                              child: GetBuilder<DealsController>(builder: (dealsController) {
                                 return ListView.separated(
-                                  separatorBuilder:
-                                      (BuildContext context, int index) {
+                                  separatorBuilder: (BuildContext context, int index) {
                                     return Container(
                                       width: 25,
                                     );
@@ -325,38 +285,24 @@ class GroceryScreen extends StatelessWidget {
                                                 height: 90,
                                                 width: 90,
                                                 decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(20),
+                                                  borderRadius: BorderRadius.circular(20),
                                                   color: dealsColors[index],
                                                   // border: Border.all(
                                                   //     color: Color.fromRGBO(90, 112, 129, 1)),
                                                 )),
                                             GestureDetector(
                                               onTap: () {
-                                                if (dealsController
-                                                        .boolList[index] ==
-                                                    false) {
-                                                  dealsController.boolList[index] =
-                                                      true;
-                                                  dealsController.addItemToFav(
-                                                      dealsController
-                                                          .dealsList[index]);
+                                                if (dealsController.boolList[index] == false) {
+                                                  dealsController.boolList[index] = true;
+                                                  dealsController.addItemToFav(dealsController.dealsList[index]);
 
-                                                  dealsController
-                                                      .update(['heart icon']);
-                                                
+                                                  dealsController.update(['heart icon']);
                                                 } else {
-                                                  dealsController.boolList[index] =
-                                                      false;
-                                                  dealsController.delete(
-                                                      dealsController
-                                                          .dealsList[index].name);
+                                                  dealsController.boolList[index] = false;
+                                                  dealsController.delete(dealsController.dealsList[index].name);
 
-                                                  dealsController
-                                                      .update(['heart icon']);
-                                                    
+                                                  dealsController.update(['heart icon']);
                                                 }
-                                              
                                               },
                                               child: GetBuilder<DealsController>(
                                                   id: 'heart icon',
@@ -365,25 +311,13 @@ class GroceryScreen extends StatelessWidget {
                                                       height: 24,
                                                       width: 24,
                                                       decoration: BoxDecoration(
-                                                          color: AppColors
-                                                              .appBackgroundColor,
-                                                          borderRadius:
-                                                              BorderRadius.circular(
-                                                                  100)),
-                                                      child: dealsController
-                                                                      .boolList[
-                                                                  index] ==
-                                                              false
+                                                          color: AppColors.appBackgroundColor, borderRadius: BorderRadius.circular(100)),
+                                                      child: dealsController.boolList[index] == false
                                                           ? const Icon(
-                                                              FontAwesomeIcons
-                                                                  .heart,
+                                                              FontAwesomeIcons.heart,
                                                               size: 15,
                                                             )
-                                                          : const Icon(
-                                                              FontAwesomeIcons
-                                                                  .solidHeart,
-                                                              size: 15,
-                                                              color: Colors.red),
+                                                          : const Icon(FontAwesomeIcons.solidHeart, size: 15, color: Colors.red),
                                                     );
                                                   }),
                                             ),
@@ -395,58 +329,35 @@ class GroceryScreen extends StatelessWidget {
                                         Padding(
                                           padding: const EdgeInsets.all(8.0),
                                           child: Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
+                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                            crossAxisAlignment: CrossAxisAlignment.start,
                                             children: [
                                               Text(
-                                                dealsController
-                                                    .dealsList[index].name,
-                                                style: const TextStyle(
-                                                    fontSize: 10,
-                                                    fontWeight: FontWeight.bold),
+                                                dealsController.dealsList[index].name,
+                                                style: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
                                               ),
-                                              Text(
-                                                  dealsController
-                                                      .dealsList[index].serving,
-                                                  style: const TextStyle(fontSize: 10)),
+                                              Text(dealsController.dealsList[index].serving, style: const TextStyle(fontSize: 10)),
                                               Row(
                                                 children: [
                                                   const Icon(
                                                     Icons.location_on_outlined,
                                                     size: 10,
                                                   ),
-                                                  Text(
-                                                      '${dealsController
-                                                              .dealsList[index]
-                                                              .time} Minutes Away',
-                                                      style:
-                                                          const TextStyle(fontSize: 10))
+                                                  Text('${dealsController.dealsList[index].time} Minutes Away', style: const TextStyle(fontSize: 10))
                                                 ],
                                               ),
                                               Row(
                                                 children: [
                                                   Text(
-                                                    '\$ ${dealsController
-                                                            .dealsList[index].price}',
-                                                    style: const TextStyle(
-                                                        color: Color.fromRGBO(
-                                                            238, 106, 97, 1),
-                                                        fontWeight:
-                                                            FontWeight.bold),
+                                                    '\$ ${dealsController.dealsList[index].price}',
+                                                    style: const TextStyle(color: Color.fromRGBO(238, 106, 97, 1), fontWeight: FontWeight.bold),
                                                   ),
                                                   const SizedBox(
                                                     width: 10,
                                                   ),
                                                   Text(
-                                                    '\$ ${dealsController
-                                                            .dealsList[index]
-                                                            .oldPrice}',
-                                                    style: const TextStyle(
-                                                        decoration: TextDecoration
-                                                            .lineThrough,
-                                                        color: Colors.grey),
+                                                    '\$ ${dealsController.dealsList[index].oldPrice}',
+                                                    style: const TextStyle(decoration: TextDecoration.lineThrough, color: Colors.grey),
                                                   )
                                                 ],
                                               ),
@@ -468,12 +379,9 @@ class GroceryScreen extends StatelessWidget {
                       Container(
                         width: 346,
                         height: 131,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: const Color.fromRGBO(254, 200, 189, 1)),
+                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: const Color.fromRGBO(254, 200, 189, 1)),
                         child: Padding(
-                          padding: const EdgeInsets.only(
-                              bottom: 0, left: 22, right: 12, top: 0),
+                          padding: const EdgeInsets.only(bottom: 0, left: 22, right: 12, top: 0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [

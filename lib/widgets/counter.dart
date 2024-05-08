@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../controllers/cart_controller.dart';
+import '../screens/cart/controller.dart';
 
 class CartCounter extends StatelessWidget {
   final int index;

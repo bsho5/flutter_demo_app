@@ -1,5 +1,5 @@
 
-import 'package:flutter_demo_app/models/item_model.dart';
+import 'package:flutter_demo_app/screens/items/model.dart';
 
 class CategoryModel {
   String? id;

@@ -1,8 +1,8 @@
-import 'package:flutter_demo_app/models/item_model.dart';
+import 'package:flutter_demo_app/screens/items/model.dart';
 import 'package:get/get.dart';
 
-import '../data/repository/category_repo.dart';
-import '../models/category_model.dart';
+import 'repo.dart';
+import 'model.dart';
 
 class CategoryController extends GetxController {
   final CategoryRepo categoryRepo;

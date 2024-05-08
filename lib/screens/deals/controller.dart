@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
-import '../data/repository/deals_repo.dart';
-import '../models/deals_model.dart';
+import 'model.dart';
+import 'repo.dart';
 
 class DealsController extends GetxController {
   final DealsRepo dealsRepo;

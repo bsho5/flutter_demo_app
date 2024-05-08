@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
 
 // import '../data/repository/item_repo.dart';
-import '../models/category_model.dart';
-import '../models/item_model.dart';
-import 'cart_controller.dart';
+import '../home/model.dart';
+import 'model.dart';
+import '../cart/controller.dart';
 
 class ItemController extends GetxController {
   // final ItemRepo itemRepo;

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_demo_app/controllers/address_controller.dart';
-import 'package:flutter_demo_app/controllers/cart_controller.dart';
+import 'package:flutter_demo_app/screens/address/controller.dart';
+import 'package:flutter_demo_app/screens/cart/controller.dart';
 import 'package:flutter_demo_app/screens/splash_screen.dart';
 import 'package:get/get.dart';
-import 'controllers/category_controller.dart';
-import 'controllers/deals_controller.dart';
+import 'screens/home/controller.dart';
+import 'screens/deals/controller.dart';
 import 'helper/dependencies.dart' as dep;
 
 Future<void> main() async {

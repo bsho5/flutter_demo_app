@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
-import '../data/repository/address_repo.dart';
-import '../models/address_model.dart';
+import 'repo.dart';
+import 'model.dart';
 
 class AddressController extends GetxController {
   final AddressRepo addressRepo;

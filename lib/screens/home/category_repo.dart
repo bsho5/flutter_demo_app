@@ -1,4 +1,4 @@
-import '../api/api_client.dart';
+import '../../api/api_client.dart';
 
 class CategoryRepo {
   final ApiClient apiClient;

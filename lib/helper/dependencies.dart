@@ -1,15 +1,15 @@
-import 'package:flutter_demo_app/data/repository/deals_repo.dart';
+import 'package:flutter_demo_app/screens/deals/repo.dart';
 import 'package:get/instance_manager.dart';
 
 import '../const/constants.dart';
-import '../controllers/address_controller.dart';
-import '../controllers/cart_controller.dart';
-import '../controllers/category_controller.dart';
-import '../controllers/deals_controller.dart';
-import '../controllers/item_controller.dart';
-import '../data/api/api_client.dart';
-import '../data/repository/address_repo.dart';
-import '../data/repository/category_repo.dart';
+import '../screens/address/controller.dart';
+import '../screens/cart/controller.dart';
+import '../screens/home/controller.dart';
+import '../screens/deals/controller.dart';
+import '../screens/items/controller.dart';
+import '../api/api_client.dart';
+import '../screens/address/repo.dart';
+import '../screens/home/repo.dart';
 // import '../data/repository/item_repo.dart';
 
 Future<void> init() async {

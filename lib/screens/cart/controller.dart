@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../models/cart_model.dart';
-import '../models/item_model.dart';
+import 'model.dart';
+import '../items/model.dart';
 
 class CartController extends GetxController {
   final Map<String?, CartModel> _cart = {};

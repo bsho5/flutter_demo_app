@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo_app/const/colors.dart';
-import 'package:flutter_demo_app/controllers/cart_controller.dart';
+import 'package:flutter_demo_app/screens/cart/controller.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'dart:math' as math;
-import '../screens/cart_screen.dart';
-import '../screens/favorites_screen.dart';
-import '../screens/grocery_screen.dart';
+import '../screens/cart/view.dart';
+import '../screens/fav/view.dart';
+import '../screens/home/view.dart';
 import '../screens/news_screen.dart';
 
 class BottomNavBar extends StatefulWidget {
@@ -38,7 +38,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        backgroundColor: AppColors.floatingActionsButtonColor,
+        backgroundColor: AppColors.primary,
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -62,7 +62,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
         onTap: onTapTapped,
         currentIndex: _currentIndex,
         elevation: 0.0,
-        selectedItemColor: AppColors.bottomNavBarSelectedIconColor,
+        selectedItemColor:  AppColors.primary,
         unselectedItemColor: AppColors.bottomNavBarUnSelectedIconColor,
         showUnselectedLabels: true,
         type: BottomNavigationBarType.fixed,

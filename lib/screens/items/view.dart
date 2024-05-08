@@ -2,10 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_demo_app/const/colors.dart';
-import 'package:flutter_demo_app/models/item_model.dart';
+import 'package:flutter_demo_app/screens/items/model.dart';
 import 'package:get/get.dart';
-import '../controllers/cart_controller.dart';
-import '../controllers/category_controller.dart';
+import '../cart/controller.dart';
+import '../home/controller.dart';
 import 'dart:math';
 
 class ItemsScreen extends StatelessWidget {
