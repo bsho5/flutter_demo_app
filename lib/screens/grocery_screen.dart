@@ -124,81 +124,85 @@ class GroceryScreen extends StatelessWidget {
                       ),
                       SizedBox(
                         height: 49,
-                        child: Expanded(
-                          child: GetBuilder<AddressController>(
-                              builder: (addressController) {
-                            return ListView.separated(
-                              separatorBuilder:
-                                  (BuildContext context, int index) {
-                                return Container(
-                                  width: 25,
-                                );
-                              },
-                              scrollDirection: Axis.horizontal,
-                              // shrinkWrap: true,
-                              itemCount: addressController.addressList.length,
-                              itemBuilder: (BuildContext context, int index) {
-                                return Container(
-                                  height: 49,
-                                  width: 167,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    border: Border.all(
-                                        color: const Color.fromRGBO(
-                                            230, 230, 230, 1)),
-                                  ),
-                                  child: Row(
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.all(7.0),
-                                        child: Container(
-                                            height: 34,
-                                            width: 34,
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(5),
-                                                color: const Color.fromRGBO(
-                                                    227, 221, 217, 1)
-                                                // border: Border.all(
-                                                //     color: Color.fromRGBO(90, 112, 129, 1)),
-                                                )),
+                        child: Column(
+                          children: [
+                            Expanded(
+                              child: GetBuilder<AddressController>(
+                                  builder: (addressController) {
+                                return ListView.separated(
+                                  separatorBuilder:
+                                      (BuildContext context, int index) {
+                                    return Container(
+                                      width: 25,
+                                    );
+                                  },
+                                  scrollDirection: Axis.horizontal,
+                                  // shrinkWrap: true,
+                                  itemCount: addressController.addressList.length,
+                                  itemBuilder: (BuildContext context, int index) {
+                                    return Container(
+                                      height: 49,
+                                      width: 167,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        border: Border.all(
+                                            color: const Color.fromRGBO(
+                                                230, 230, 230, 1)),
                                       ),
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceEvenly,
+                                      child: Row(
                                         children: [
-                                          Text(
-                                            '${addressController
-                                                    .addressList[index].type} Address',
-                                            style: const TextStyle(
-                                                fontSize: 12,
-                                                fontWeight: FontWeight.bold),
+                                          Padding(
+                                            padding: const EdgeInsets.all(7.0),
+                                            child: Container(
+                                                height: 34,
+                                                width: 34,
+                                                decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(5),
+                                                    color: const Color.fromRGBO(
+                                                        227, 221, 217, 1)
+                                                    // border: Border.all(
+                                                    //     color: Color.fromRGBO(90, 112, 129, 1)),
+                                                    )),
                                           ),
-                                          Row(
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceEvenly,
                                             children: [
-                                              SizedBox(
-                                                width: 100,
-                                                child: Text(
-                                                  addressController
-                                                      .addressList[index]
-                                                      .fullAddress,
-                                                  style:
-                                                      const TextStyle(fontSize: 10),
-                                                  softWrap: true,
-                                                ),
+                                              Text(
+                                                '${addressController
+                                                        .addressList[index].type} Address',
+                                                style: const TextStyle(
+                                                    fontSize: 12,
+                                                    fontWeight: FontWeight.bold),
+                                              ),
+                                              Row(
+                                                children: [
+                                                  SizedBox(
+                                                    width: 100,
+                                                    child: Text(
+                                                      addressController
+                                                          .addressList[index]
+                                                          .fullAddress,
+                                                      style:
+                                                          const TextStyle(fontSize: 10),
+                                                      softWrap: true,
+                                                    ),
+                                                  ),
+                                                ],
                                               ),
                                             ],
-                                          ),
+                                          )
                                         ],
-                                      )
-                                    ],
-                                  ),
+                                      ),
+                                    );
+                                  },
                                 );
-                              },
-                            );
-                          }),
+                              }),
+                            ),
+                          ],
                         ),
                       ),
                       const SizedBox(
@@ -223,56 +227,60 @@ class GroceryScreen extends StatelessWidget {
                       ),
                       SizedBox(
                         height: 100,
-                        child: Expanded(
-                          child: GetBuilder<CategoryController>(
-                              builder: (categoryController) {
-                            return ListView.separated(
-                              separatorBuilder:
-                                  (BuildContext context, int index) {
-                                return Container(
-                                  width: 25,
-                                );
-                              },
-                              scrollDirection: Axis.horizontal,
-                              // shrinkWrap: true,
-                              itemCount:
-                                  categoryController.categoryList.length,
-                              itemBuilder: (BuildContext context, int index) {
-                                return GestureDetector(
-                                  onTap: () => Get.to(() => ItemsScreen(
-                                        items: categoryController
-                                            .categoryList[index].items!,
-                                        categoryName: categoryController
-                                            .categoryList[index].name!,
-                                      )),
-                                  child: Column(
-                                    children: [
-                                      Container(
-                                          height: 56,
-                                          width: 56,
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                            color: colors[index],
-                                            // border: Border.all(
-                                            //     color: Color.fromRGBO(90, 112, 129, 1)),
+                        child: Column(
+                          children: [
+                            Expanded(
+                              child: GetBuilder<CategoryController>(
+                                  builder: (categoryController) {
+                                return ListView.separated(
+                                  separatorBuilder:
+                                      (BuildContext context, int index) {
+                                    return Container(
+                                      width: 25,
+                                    );
+                                  },
+                                  scrollDirection: Axis.horizontal,
+                                  // shrinkWrap: true,
+                                  itemCount:
+                                      categoryController.categoryList.length,
+                                  itemBuilder: (BuildContext context, int index) {
+                                    return GestureDetector(
+                                      onTap: () => Get.to(() => ItemsScreen(
+                                            items: categoryController
+                                                .categoryList[index].items!,
+                                            categoryName: categoryController
+                                                .categoryList[index].name!,
                                           )),
-                                      const SizedBox(
-                                        height: 6,
+                                      child: Column(
+                                        children: [
+                                          Container(
+                                              height: 56,
+                                              width: 56,
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                                color: colors[index],
+                                                // border: Border.all(
+                                                //     color: Color.fromRGBO(90, 112, 129, 1)),
+                                              )),
+                                          const SizedBox(
+                                            height: 6,
+                                          ),
+                                          Text(
+                                              categoryController
+                                                      .categoryList[index].name ??
+                                                  '',
+                                              style: const TextStyle(
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.w500))
+                                        ],
                                       ),
-                                      Text(
-                                          categoryController
-                                                  .categoryList[index].name ??
-                                              '',
-                                          style: const TextStyle(
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w500))
-                                    ],
-                                  ),
+                                    );
+                                  },
                                 );
-                              },
-                            );
-                          }),
+                              }),
+                            ),
+                          ],
                         ),
                       ),
                       const SizedBox(
@@ -293,161 +301,165 @@ class GroceryScreen extends StatelessWidget {
                       ),
                       SizedBox(
                         height: 90,
-                        child: Expanded(
-                          child: GetBuilder<DealsController>(
-                              builder: (dealsController) {
-                            return ListView.separated(
-                              separatorBuilder:
-                                  (BuildContext context, int index) {
-                                return Container(
-                                  width: 25,
-                                );
-                              },
-                              scrollDirection: Axis.horizontal,
-                              // shrinkWrap: true,
-                              itemCount: dealsController.dealsList.length,
-                              itemBuilder: (BuildContext context, int index) {
-                                return Row(
-                                  children: [
-                                    Stack(
+                        child: Column(
+                          children: [
+                            Expanded(
+                              child: GetBuilder<DealsController>(
+                                  builder: (dealsController) {
+                                return ListView.separated(
+                                  separatorBuilder:
+                                      (BuildContext context, int index) {
+                                    return Container(
+                                      width: 25,
+                                    );
+                                  },
+                                  scrollDirection: Axis.horizontal,
+                                  // shrinkWrap: true,
+                                  itemCount: dealsController.dealsList.length,
+                                  itemBuilder: (BuildContext context, int index) {
+                                    return Row(
                                       children: [
-                                        Container(
-                                            height: 90,
-                                            width: 90,
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(20),
-                                              color: dealsColors[index],
-                                              // border: Border.all(
-                                              //     color: Color.fromRGBO(90, 112, 129, 1)),
-                                            )),
-                                        GestureDetector(
-                                          onTap: () {
-                                            if (dealsController
-                                                    .boolList[index] ==
-                                                false) {
-                                              dealsController.boolList[index] =
-                                                  true;
-                                              dealsController.addItemToFav(
-                                                  dealsController
-                                                      .dealsList[index]);
+                                        Stack(
+                                          children: [
+                                            Container(
+                                                height: 90,
+                                                width: 90,
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(20),
+                                                  color: dealsColors[index],
+                                                  // border: Border.all(
+                                                  //     color: Color.fromRGBO(90, 112, 129, 1)),
+                                                )),
+                                            GestureDetector(
+                                              onTap: () {
+                                                if (dealsController
+                                                        .boolList[index] ==
+                                                    false) {
+                                                  dealsController.boolList[index] =
+                                                      true;
+                                                  dealsController.addItemToFav(
+                                                      dealsController
+                                                          .dealsList[index]);
 
-                                              dealsController
-                                                  .update(['heart icon']);
-                                            
-                                            } else {
-                                              dealsController.boolList[index] =
-                                                  false;
-                                              dealsController.delete(
                                                   dealsController
-                                                      .dealsList[index].name);
-
-                                              dealsController
-                                                  .update(['heart icon']);
+                                                      .update(['heart icon']);
                                                 
-                                            }
-                                          
-                                          },
-                                          child: GetBuilder<DealsController>(
-                                              id: 'heart icon',
-                                              builder: (dealsController) {
-                                                return Container(
-                                                  height: 24,
-                                                  width: 24,
-                                                  decoration: BoxDecoration(
-                                                      color: AppColors
-                                                          .appBackgroundColor,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              100)),
-                                                  child: dealsController
-                                                                  .boolList[
-                                                              index] ==
-                                                          false
-                                                      ? const Icon(
-                                                          FontAwesomeIcons
-                                                              .heart,
-                                                          size: 15,
-                                                        )
-                                                      : const Icon(
-                                                          FontAwesomeIcons
-                                                              .solidHeart,
-                                                          size: 15,
-                                                          color: Colors.red),
-                                                );
-                                              }),
+                                                } else {
+                                                  dealsController.boolList[index] =
+                                                      false;
+                                                  dealsController.delete(
+                                                      dealsController
+                                                          .dealsList[index].name);
+
+                                                  dealsController
+                                                      .update(['heart icon']);
+                                                    
+                                                }
+                                              
+                                              },
+                                              child: GetBuilder<DealsController>(
+                                                  id: 'heart icon',
+                                                  builder: (dealsController) {
+                                                    return Container(
+                                                      height: 24,
+                                                      width: 24,
+                                                      decoration: BoxDecoration(
+                                                          color: AppColors
+                                                              .appBackgroundColor,
+                                                          borderRadius:
+                                                              BorderRadius.circular(
+                                                                  100)),
+                                                      child: dealsController
+                                                                      .boolList[
+                                                                  index] ==
+                                                              false
+                                                          ? const Icon(
+                                                              FontAwesomeIcons
+                                                                  .heart,
+                                                              size: 15,
+                                                            )
+                                                          : const Icon(
+                                                              FontAwesomeIcons
+                                                                  .solidHeart,
+                                                              size: 15,
+                                                              color: Colors.red),
+                                                    );
+                                                  }),
+                                            ),
+                                          ],
                                         ),
+                                        const SizedBox(
+                                          width: 15,
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                dealsController
+                                                    .dealsList[index].name,
+                                                style: const TextStyle(
+                                                    fontSize: 10,
+                                                    fontWeight: FontWeight.bold),
+                                              ),
+                                              Text(
+                                                  dealsController
+                                                      .dealsList[index].serving,
+                                                  style: const TextStyle(fontSize: 10)),
+                                              Row(
+                                                children: [
+                                                  const Icon(
+                                                    Icons.location_on_outlined,
+                                                    size: 10,
+                                                  ),
+                                                  Text(
+                                                      '${dealsController
+                                                              .dealsList[index]
+                                                              .time} Minutes Away',
+                                                      style:
+                                                          const TextStyle(fontSize: 10))
+                                                ],
+                                              ),
+                                              Row(
+                                                children: [
+                                                  Text(
+                                                    '\$ ${dealsController
+                                                            .dealsList[index].price}',
+                                                    style: const TextStyle(
+                                                        color: Color.fromRGBO(
+                                                            238, 106, 97, 1),
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                                  ),
+                                                  const SizedBox(
+                                                    width: 10,
+                                                  ),
+                                                  Text(
+                                                    '\$ ${dealsController
+                                                            .dealsList[index]
+                                                            .oldPrice}',
+                                                    style: const TextStyle(
+                                                        decoration: TextDecoration
+                                                            .lineThrough,
+                                                        color: Colors.grey),
+                                                  )
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        )
                                       ],
-                                    ),
-                                    const SizedBox(
-                                      width: 15,
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            dealsController
-                                                .dealsList[index].name,
-                                            style: const TextStyle(
-                                                fontSize: 10,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                          Text(
-                                              dealsController
-                                                  .dealsList[index].serving,
-                                              style: const TextStyle(fontSize: 10)),
-                                          Row(
-                                            children: [
-                                              const Icon(
-                                                Icons.location_on_outlined,
-                                                size: 10,
-                                              ),
-                                              Text(
-                                                  '${dealsController
-                                                          .dealsList[index]
-                                                          .time} Minutes Away',
-                                                  style:
-                                                      const TextStyle(fontSize: 10))
-                                            ],
-                                          ),
-                                          Row(
-                                            children: [
-                                              Text(
-                                                '\$ ${dealsController
-                                                        .dealsList[index].price}',
-                                                style: const TextStyle(
-                                                    color: Color.fromRGBO(
-                                                        238, 106, 97, 1),
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                              ),
-                                              const SizedBox(
-                                                width: 10,
-                                              ),
-                                              Text(
-                                                '\$ ${dealsController
-                                                        .dealsList[index]
-                                                        .oldPrice}',
-                                                style: const TextStyle(
-                                                    decoration: TextDecoration
-                                                        .lineThrough,
-                                                    color: Colors.grey),
-                                              )
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    )
-                                  ],
+                                    );
+                                  },
                                 );
-                              },
-                            );
-                          }),
+                              }),
+                            ),
+                          ],
                         ),
                       ),
                       const SizedBox(
